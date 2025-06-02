@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="email_template_low_stock_alert_sale" model="mail.template">
+        <field name="name">Low Stock Alert</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="email_from">letstest0123@gmail.com</field>
+        <field name="email_to">your_email@example.com</field>
+        <field name="subject">Low Stock Alert</field>
+        <field name="body_html" type="html">
+            <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+                <p>Dear Manager,</p>
+                <p>
+                    The following product(s) in this delivery have quantities below their minimum levels:
+                    <t t-set="low_stock_products" t-value="[]"/>
+                    <t t-foreach="object.move_ids" t-as="move">
+                        <t t-set="product" t-value="move.product_id"/>
+                        <t t-set="qty_available" t-value="product.qty_available"/>
+                        <t t-set="orderpoint" t-value="product.orderpoint_ids and product.orderpoint_ids[0] or None"/>
+                        <t t-set="min_qty" t-value="orderpoint and orderpoint.product_min_qty or 0"/>
+                        <t t-if="min_qty and qty_available &lt; min_qty">
+                            <t t-set="low_stock_products" t-value="low_stock_products + [product.display_name]"/>
+                        </t>
+                    </t>
+                    <t t-if="low_stock_products">
+                        <strong>
+                            <t t-out="', '.join(low_stock_products)"/>
+                        </strong>.
+                    </t>
+                </p>
+                <table style="border: 1px solid #ddd; border-collapse: collapse; width: 100%; margin-top: 10px;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2; text-align: left;">
+                            <th style="border: 1px solid #ddd; padding: 8px;">Product</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Available Qty</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Minimum Qty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="object.move_ids" t-as="line">
+                            <t t-set="min_qty" t-value="line.product_id.orderpoint_ids[0].product_min_qty if line.product_id.orderpoint_ids else 0"/>
+                            <t t-if="line.product_id.qty_available &lt; min_qty">
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">
+                                        <t t-out="line.product_id.display_name"/>
+                                    </td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">
+                                        <t t-out="line.product_id.qty_available"/>
+                                    </td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">
+                                        <t t-out="min_qty"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+                <p>Please consider replenishment.</p>
+                <p>Regards,<br/><strong><t t-out="object.company_id.name"/></strong></p>
+            </div>
+
+        </field>
+    </record>
+</odoo>

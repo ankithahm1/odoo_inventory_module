@@ -1,0 +1,31 @@
+<odoo>
+    <!-- Product Request: only see records from user's warehouse -->
+    <odoo>
+    <!-- Product Request: allow read if user is involved in the request -->
+    <record id="rule_ims_product_request_warehouse" model="ir.rule">
+        <field name="name">Product Request: warehouse filter</field>
+        <field name="model_id" ref="model_ims_product_request"/>
+        <field name="domain_force">
+            ['|',
+                ('requested_warehouse_id', '=', user.x_warehouse_access_id.id),
+                ('requested_by', '=', user.id)
+            ]
+        </field>
+        <field name="groups" eval="[(4, ref('ims.group_ims_warehouse_manager'))]"/>
+        <!-- Optional: apply only for read access -->
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+</odoo>
+
+
+    <!-- Product Sending: only see records from responding warehouse -->
+    <record id="rule_ims_product_sending_warehouse" model="ir.rule">
+        <field name="name">Product Sending: warehouse filter</field>
+        <field name="model_id" ref="model_ims_product_sending"/>
+        <field name="domain_force">[('sending_warehouse_id', '=', user.x_warehouse_access_id.id)]</field>
+        <field name="groups" eval="[(4, ref('ims.group_ims_warehouse_manager'))]"/>
+    </record>
+</odoo>

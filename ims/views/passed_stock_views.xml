@@ -1,0 +1,43 @@
+<odoo>
+    <!-- List View: Aggregate by Product -->
+    <record id="view_passed_stock_list" model="ir.ui.view">
+        <field name="name">passed.stock.list</field>
+        <field name="model">passed.stock</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="product_id"/>
+                <field name="total_quantity"/>
+                <field name="total_valuation" sum="Total:"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View: Show Notebook with Shelf-wise Info -->
+    <record id="view_passed_stock_form" model="ir.ui.view">
+        <field name="name">passed.stock.form</field>
+        <field name="model">passed.stock</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="total_quantity"/>
+                        <field name="total_valuation"/>
+                    </group>
+                    <notebook>
+                        <page string="Shelf Locations">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="shelf_location_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                    <field name="qc_id"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

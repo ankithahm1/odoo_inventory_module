@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="inventory__mrp.SmartDashboardTemplate" owl="1">
+        <!-- Header section with logo on the left and title on the right -->
+        <div style="width: 100%; display: flex; justify-content: center; margin: 2rem 0 1rem 0;">
+            <div
+                style="display: flex; flex-direction: row; align-items: center; gap: 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1rem 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); max-width: 800px;"
+            >
+                <img
+                    src="/ims/static/description/icon.png"
+                    alt="Dashboard Logo"
+                    style="height: 80px; width: auto;"
+                />
+                <h1 style="font-size: 2rem; font-weight: 700; color: #EBAF33; margin: 0;">
+                    Qream Solutions IMS
+                </h1>
+            </div>
+        </div>
+
+
+        <div class="o_container" style="padding: 1rem; max-width: 100%; overflow-x: hidden;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+
+                <!-- Dashboard Card Template -->
+                <t t-set="cardStyle"
+                   t-value="'background: white; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);'"/>
+                <t t-set="sectionTitleStyle"
+                   t-value="'font-size: 1.25rem; font-weight: bold; color: black; margin-bottom: 0.75rem;'"/>
+                <t t-set="subSectionTitleStyle" t-value="'font-size: 0.875rem; font-weight: 600;'"/>
+                <t t-set="countStyle" t-value="'font-size: 1.125rem; font-weight: bold;'"/>
+                <t t-set="sectionSpacing" t-value="'margin-bottom: 0.75rem; padding-left: 0.75rem;'"/>
+
+
+                <!-- Manufacturing Orders Card -->
+                <div>
+                    <div t-att-style="cardStyle">
+                        <h2 t-att-style="sectionTitleStyle">🏭 Manufacturing Orders</h2>
+                        <div>
+                            <div t-on-click="() => openMOView([[&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;]])"
+                                 t-att-style="'border-left: 4px solid #facc15; ' + sectionSpacing + ' cursor: pointer;'">
+                                <h3 t-att-style="subSectionTitleStyle">Draft</h3>
+                                <p t-att-style="countStyle + ' color: #facc15;'"><t t-esc="state.moDraft"/></p>
+                            </div>
+                            <div t-on-click="() => openMOView([[&quot;state&quot;, &quot;=&quot;, &quot;progress&quot;]])"
+                                 t-att-style="'border-left: 4px solid #60a5fa; ' + sectionSpacing + ' cursor: pointer;'">
+                                <h3 t-att-style="subSectionTitleStyle">In Progress</h3>
+                                <p t-att-style="countStyle + ' color: #60a5fa;'"><t t-esc="state.moInProgress"/></p>
+                            </div>
+                            <div t-on-click="() => openMOView([[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;progress&quot;]], [&quot;date_deadline&quot;, &quot;&lt;&quot;, new Date()]])"
+                                 t-att-style="'border-left: 4px solid #ef4444; ' + sectionSpacing + ' cursor: pointer;'">
+                                <h3 t-att-style="subSectionTitleStyle">Late</h3>
+                                <p t-att-style="countStyle + ' color: #ef4444;'"><t t-esc="state.moLate"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Outgoing Deliveries Card -->
+                <div>
+                    <div t-att-style="cardStyle">
+                        <h2 t-att-style="sectionTitleStyle">🚚 Outgoing Deliveries</h2>
+                        <div>
+                            <div t-on-click="() => openDeliveryView([[&quot;picking_type_code&quot;, &quot;=&quot;, &quot;outgoing&quot;], [&quot;state&quot;, &quot;=&quot;, &quot;confirmed&quot;]])"
+                                 t-att-style="'border-left: 4px solid #f59e0b; ' + sectionSpacing + ' cursor: pointer;'">
+                                <h3 t-att-style="subSectionTitleStyle">Waiting</h3>
+                                <p t-att-style="countStyle + ' color: #f59e0b;'"><t t-esc="state.deliveryWaiting"/></p>
+                            </div>
+                            <div t-on-click="() => openDeliveryView([[&quot;picking_type_code&quot;, &quot;=&quot;, &quot;outgoing&quot;], [&quot;scheduled_date&quot;, &quot;&lt;&quot;, new Date()], [&quot;state&quot;, &quot;in&quot;, [&quot;assigned&quot;, &quot;confirmed&quot;]]])"
+                                 t-att-style="'border-left: 4px solid #ef4444; ' + sectionSpacing + ' cursor: pointer;'">
+                                <h3 t-att-style="subSectionTitleStyle">Late</h3>
+                                <p t-att-style="countStyle + ' color: #ef4444;'"><t t-esc="state.deliveryLate"/></p>
+                            </div>
+                            <div t-on-click="() => openDeliveryView([[&quot;picking_type_code&quot;, &quot;=&quot;, &quot;outgoing&quot;], [&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]])"
+                                 t-att-style="'border-left: 4px solid #10b981; ' + sectionSpacing + ' cursor: pointer;'">
+                                <h3 t-att-style="subSectionTitleStyle">Done</h3>
+                                <p t-att-style="countStyle + ' color: #10b981;'"><t t-esc="state.deliveryDone"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Purchase Orders Card -->
+                <div>
+                    <div t-att-style="cardStyle">
+                        <h2 t-att-style="sectionTitleStyle">📦 Purchase Orders</h2>
+                        <div>
+                            <div t-on-click="() => openPOView([[&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;]])"
+                                 t-att-style="'border-left: 4px solid #facc15; ' + sectionSpacing + ' cursor: pointer;'">
+                                <h3 t-att-style="subSectionTitleStyle">Draft</h3>
+                                <p t-att-style="countStyle + ' color: #facc15;'"><t t-esc="state.poDraft"/></p>
+                            </div>
+                            <div t-on-click="() => openPOView([[&quot;state&quot;, &quot;=&quot;, &quot;to approve&quot;]])"
+                                 t-att-style="'border-left: 4px solid #60a5fa; ' + sectionSpacing + ' cursor: pointer;'">
+                                <h3 t-att-style="subSectionTitleStyle">Waiting Approval</h3>
+                                <p t-att-style="countStyle + ' color: #60a5fa;'"><t t-esc="state.poToApprove"/></p>
+                            </div>
+                            <div t-on-click="() => openPOView([[&quot;state&quot;, &quot;=&quot;, &quot;purchase&quot;]])"
+                                 t-att-style="'border-left: 4px solid #10b981; ' + sectionSpacing + ' cursor: pointer;'">
+                                <h3 t-att-style="subSectionTitleStyle">Approved</h3>
+                                <p t-att-style="countStyle + ' color: #10b981;'"><t t-esc="state.poApproved"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Low Stock Products -->
+                <div>
+    <div t-att-style="cardStyle">
+        <h2 t-att-style="sectionTitleStyle">📉 Products Below Minimum Stock</h2>
+        <ul style="list-style: disc; padding-left: 1.25rem;">
+            <t t-foreach="state.lowStock" t-as="item" t-key="item.id">
+                <li style="margin-bottom: 0.5rem; font-size: 0.75rem; color: #4b5563;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                        <strong style="color: #dc2626;"><t t-esc="item.product.display_name"/></strong>
+                        <br/>
+                        <button t-on-click="() => replenishProduct(item.product.id)"
+                                style="padding: 0.15rem 0.4rem; font-size: 0.65rem; background-color: #e5e7eb; color: #374151; border: 1px solid #d1d5db; border-radius: 0.25rem; cursor: pointer;">
+                            Replenish
+                        </button>
+                    </div>
+                    <div style="margin-left: 1rem;">
+                        On Hand: <t t-esc="item.product.qty_available"/>
+                        / Min:
+                        <t t-esc="item.product_min_qty"/>
+                    </div>
+                </li>
+            </t>
+            <t t-if="state.lowStock.length === 0">
+                <li style="color: #9ca3af;">🎉 All products are sufficiently stocked!</li>
+            </t>
+        </ul>
+    </div>
+</div>
+            </div>
+        </div>
+    </t>
+</templates>

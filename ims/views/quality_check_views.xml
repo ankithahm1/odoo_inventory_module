@@ -1,0 +1,67 @@
+<odoo>
+    <data>
+        <!-- Quality Check List View -->
+        <record id="view_quality_check_list" model="ir.ui.view">
+            <field name="name">quality.check.list</field>
+            <field name="model">quality.check</field>
+            <field name="arch" type="xml">
+                <list string="Quality Checks">
+                    <field name="incoming_id" string="Stock ID"/>
+                    <field name="qc_id"/>
+                    <field name="status_icon" widget="html" string="Status"/>
+                    <field name="product_id"/>
+                    <field name="quantity"/>
+                    <field name="passed_quantity"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Quality Check Form View -->
+        <record id="view_quality_check_form" model="ir.ui.view">
+            <field name="name">quality.check.form</field>
+            <field name="model">quality.check</field>
+            <field name="arch" type="xml">
+                <form string="Quality Check">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <field name="qc_status" widget="statusbar" statusbar_visible="pending,passed,failed"/>
+                        </div>
+                        <group>
+                            <field name="incoming_id" domain="[('qc_done','=',False)]"/>
+                            <field name="qc_id" readonly="1"/>
+                            <field name="product_id" readonly="1"/>
+                            <field name="quantity" readonly="1"/>
+                            <field name="date" readonly="1"/>
+                        </group>
+
+                        <!-- Invisible control fields for button logic -->
+                        <field name="can_initiate_qc" invisible="1"/>
+                        <field name="can_pass_qc" invisible="1"/>
+                        <field name="can_fail_qc" invisible="1"/>
+
+                        <div class="mt16" style="display: flex; gap: 10px; align-items: center;">
+                            <button name="action_initiate_qc"
+                                    type="object"
+                                    string="Initiate QC"
+                                    class="btn btn-primary"
+                                    confirm="Are you sure you want to initiate Quality Check?"
+                                    modifiers="{'invisible': [('can_initiate_qc', '=', False)]}"/>
+
+                            <button name="action_pass_qc"
+                                    type="object"
+                                    string="Pass"
+                                    class="btn btn-success"
+                                    modifiers="{'invisible': [('can_pass_qc', '=', False)]}"/>
+
+                            <button name="action_fail_qc"
+                                    type="object"
+                                    string="Fail"
+                                    class="btn btn-danger"
+                                    modifiers="{'invisible': [('can_fail_qc', '=', False)]}"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

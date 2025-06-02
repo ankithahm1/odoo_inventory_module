@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_stock_scrap_log_list" model="ir.ui.view">
+        <field name="name">stock.scrap.log.list</field>
+        <field name="model">stock.scrap.log</field>
+        <field name="arch" type="xml">
+            <list string="Scrap Records">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="batch_id"/>
+                <field name="quantity"/>
+                <field name="scrap_date"/>
+                <field name="reason"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_stock_scrap_log_form" model="ir.ui.view">
+        <field name="name">stock.scrap.log.form</field>
+        <field name="model">stock.scrap.log</field>
+        <field name="arch" type="xml">
+            <form string="Scrap Record">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="product_id"/>
+                        <field name="batch_id"/>
+                        <field name="quantity"/>
+                        <field name="scrap_date"/>
+                        <field name="reason"/>
+<!--                        <field name="source_location_id"/>-->
+                        <field name="created_by"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

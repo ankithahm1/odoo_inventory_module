@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_purchase_confirm_popup,access.purchase_confirm_popup,model_purchase_confirm_popup,,1,1,1,1
+access_quality_check_user,access.quality.check.user,model_quality_check,base.group_user,1,1,1,1
+access_incoming_stock,access.incoming_stock,model_incoming_stock,,1,1,1,1
+access_quality_check_pass_wizard,access.quality.check.pass.wizard,model_quality_check_pass_wizard,,1,1,1,1
+access_stock_scrap_log,access.stock.scrap.log,model_stock_scrap_log,,1,1,1,1
+access_passed_stock,access.passed.stock,model_passed_stock,,1,1,1,1
+access_passed_stock_line,access.passed.stock.line,model_passed_stock_line,,1,1,1,1
+access_ims_product_request,access.ims_product_request,model_ims_product_request,,1,1,1,1
+access_ims_product_sending,access.ims_product_sending,model_ims_product_sending,,1,1,1,1
+access_ims_product_sending_line,access.ims_product_sending_line,model_ims_product_sending_line,,1,1,1,1
+access_ims_product_request_line,access.ims_product_request_line,model_ims_product_request_line,,1,1,1,1
+access_bom_master,bom.master,model_bom_master,,1,1,1,1
+access_bom_component,bom.component,model_bom_component,,1,1,1,1

@@ -1,0 +1,9 @@
+<odoo>
+    <record id="seq_stock_scrap_log" model="ir.sequence">
+        <field name="name">Stock Scrap Log</field>
+        <field name="code">stock.scrap.log</field>
+        <field name="prefix">SCRP-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
+</odoo>

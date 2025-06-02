@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_users_form_inherit_warehouse_field" model="ir.ui.view">
+        <field name="name">res.users.form.inherit.warehouse.access</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//group//field[@name='partner_id']" position="after">
+                <field name="x_warehouse_access_id" string="Warehouse Access"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

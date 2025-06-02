@@ -1,0 +1,133 @@
+<odoo>
+    <record id="view_bom_master_list" model="ir.ui.view">
+        <field name="name">bom.master.list</field>
+        <field name="model">bom.master</field>
+        <field name="arch" type="xml">
+            <list string="Bill of Materials">
+                <field name="name"/>
+                <field name="model_no"/>
+                <field name="customer"/>
+                <field name="category"/>
+                <field name="status"/>
+                <field name="approved_status"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bom_master_form" model="ir.ui.view">
+        <field name="name">bom.master.form</field>
+        <field name="model">bom.master</field>
+        <field name="arch" type="xml">
+            <form string="Bill of Materials">
+                <sheet>
+                    <group class="o_group">
+                        <group>
+                            <field name="name"/>
+                            <field name="model_no"/>
+                            <field name="customer"/>
+                            <field name="category"/>
+                            <field name="version"/>
+                        </group>
+
+                        <group>
+                            <field name="created_date"/>
+                            <field name="created_by"/>
+                            <field name="updated_date"/>
+                            <field name="updated_by"/>
+                        </group>
+                        <group>
+                            <field name="approved_date"/>
+                            <field name="approved_by"/>
+                            <field name="approved_status"/>
+                            <field name="status"/>
+                        </group>
+
+                        <group>
+                            <field name="scan_ic_qty"/>
+                            <field name="driver_ic_qty"/>
+<!--                            <field name="rok_cost"/>-->
+<!--                            <field name="ntf_cost"/>-->
+<!--                            <field name="ber_cost"/>-->
+<!--                            <field name="tft"/>-->
+<!--                            <field name="cf"/>-->
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Components">
+                            <field name="component_ids">
+                                <list editable="bottom">
+                                    <field name="bom_id"/>
+                                    <field name="component_no"/>
+                                    <field name="component_desc"/>
+                                    <field name="component_type"/>
+                                    <field name="location"/>
+                                    <field name="matty_glossy"/>
+                                    <field name="pol_top_bottom"/>
+                                    <field name="warranty"/>
+                                    <field name="main_comp"/>
+                                    <field name="component_3rd_party"/>
+                                    <field name="component_approved"/>
+                                    <field name="min_qty"/>
+                                    <field name="max_qty"/>
+                                    <field name="driver_ic_qty"/>
+                                    <field name="source_ic_qty"/>
+                                    <field name="oem"/>
+                                    <field name="version"/>
+                                    <field name="version2"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_bom_component_list" model="ir.ui.view">
+        <field name="name">bom.component.list</field>
+        <field name="model">bom.component</field>
+        <field name="arch" type="xml">
+            <list string="BoM Components">
+                <field name="component_no"/>
+                <field name="component_desc"/>
+                <field name="component_type"/>
+                <field name="location"/>
+                <field name="min_qty"/>
+                <field name="max_qty"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bom_component_form" model="ir.ui.view">
+        <field name="name">bom.component.form</field>
+        <field name="model">bom.component</field>
+        <field name="arch" type="xml">
+            <form string="BoM Component">
+                <sheet>
+                    <group>
+                        <field name="bom_id"/>
+                        <field name="component_no"/>
+                        <field name="component_desc"/>
+                        <field name="component_type"/>
+                        <field name="location"/>
+                        <field name="matty_glossy"/>
+                        <field name="pol_top_bottom"/>
+                        <field name="warranty"/>
+                        <field name="main_comp"/>
+                        <field name="component_3rd_party"/>
+                        <field name="component_approved"/>
+                        <field name="min_qty"/>
+                        <field name="max_qty"/>
+                        <field name="driver_ic_qty"/>
+                        <field name="source_ic_qty"/>
+                        <field name="oem"/>
+                        <field name="version"/>
+                        <field name="version2"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

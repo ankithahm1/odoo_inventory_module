@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="view_mrp_production_form_inherit_purchase_confirm_button" model="ir.ui.view">
+            <field name="name">mrp.production.form.purchase.material</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_purchase_raw_material" type="object" string="Purchase Raw Materials"
+                            class="btn-primary" invisible="state!='draft' or not raw_materials_short or is_po_created"/>
+                </xpath>
+                <xpath expr="//header/button[@name='action_confirm']" position="attributes">
+                    <attribute name="invisible">state != 'draft' or raw_materials_short</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

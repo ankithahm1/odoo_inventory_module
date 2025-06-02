@@ -1,0 +1,10 @@
+<odoo>
+    <record id="seq_ims_product_request" model="ir.sequence">
+        <field name="name">IMS Product Request</field>
+        <field name="code">ims.product.request</field>
+        <field name="prefix">REQ</field>
+        <field name="padding">5</field>
+        <field name="implementation">standard</field>
+        <field name="use_date_range">False</field>
+    </record>
+</odoo>

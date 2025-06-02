@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record id="view_quality_check_pass_wizard" model="ir.ui.view">
+            <field name="name">quality.check.pass.wizard.form</field>
+            <field name="model">quality.check.pass.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Select Shelf Location">
+                    <group>
+                        <field name="shelf_location_id"/>
+                        <field name="passed_quantity"/>
+                    </group>
+                    <footer>
+                        <button string="Confirm" type="object" name="action_confirm_pass" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_quality_check_pass_wizard"
+                    name="Pass Quality Check"
+                    res_model="quality.check.pass.wizard"
+                    view_mode="form"
+                    target="new"
+                    view_id="view_quality_check_pass_wizard"/>
+    </data>
+</odoo>

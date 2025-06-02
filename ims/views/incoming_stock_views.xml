@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record id="view_incoming_stock_list" model="ir.ui.view">
+            <field name="name">incoming.stock.list</field>
+            <field name="model">incoming.stock</field>
+            <field name="arch" type="xml">
+                <list string="Incoming Stock">
+                    <field name="stock_id"/>
+                    <field name="product_id"/>
+                    <field name="batch_id"/>
+                    <field name="quantity"/>
+                    <field name="unit_price"/>
+                    <!--                    <field name="state"/>-->
+                    <field name="shelf_location_id"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_incoming_stock_form" model="ir.ui.view">
+            <field name="name">incoming.stock.form</field>
+            <field name="model">incoming.stock</field>
+            <field name="arch" type="xml">
+                <form string="Incoming Stock"> <!-- Corrected root node -->
+                    <sheet>
+                        <group>
+                            <field name="stock_id" readonly="1"/>
+                            <field name="product_id"/>
+                            <field name="batch_id"/>
+                            <field name="quantity"/>
+                            <field name="unit_price"/>
+                            <field name="location_id"/>
+                            <field name="supplier_id"
+                                   domain="['|', ('category_id.name', '=', 'Vendor'), ('category_id.parent_id.name', '=', 'Vendor')]"/>
+                            <field name="reference"/>
+                            <field name="shelf_location_id"/>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
