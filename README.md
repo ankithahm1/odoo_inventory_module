@@ -108,7 +108,7 @@ ims/
 3. Install the module from the Apps menu
 
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 Python
 
 PostgreSQL
