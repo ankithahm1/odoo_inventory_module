@@ -40,6 +40,7 @@ Notifications sent automatically to warehouse managers and admins for key action
 
 ## 📂 Module Structure
 
+```text
 ims/
 ├── controllers/
 │   ├── __init__.py
@@ -99,7 +100,7 @@ ims/
 │   └── purchaseConfirm.py
 ├── __init__.py
 └── __manifest__.py
-
+```
 
 ## ⚙️ Installation
 
@@ -107,6 +108,9 @@ ims/
 2. Restart your Odoo server
 3. Install the module from the Apps menu
 
+```bash
+git clone https://github.com/ankithahm1/odoo_inventory_module.git
+```
 
 ## 🛠️ Tech Stack
 Python
