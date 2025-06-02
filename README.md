@@ -42,63 +42,64 @@ Notifications sent automatically to warehouse managers and admins for key action
 
 ims/
 ├── controllers/
-│ ├── init.py
-│ └── controllers.py
+│   ├── __init__.py
+│   └── controllers.py
 ├── data/
-│ ├── ims_request_sequences.xml
-│ ├── incoming_stock_sequence.xml
-│ ├── low_stock_cron.xml
-│ ├── low_stock_email_template.xml
-│ ├── quality_check_sequence.xml
-│ └── scrap_logs_sequence.xml
+│   ├── ims_request_sequences.xml
+│   ├── incoming_stock_sequence.xml
+│   ├── low_stock_cron.xml
+│   ├── low_stock_email_template.xml
+│   ├── quality_check_sequence.xml
+│   └── scrap_logs_sequence.xml
 ├── demo/
-│ └── demo.xml
+│   └── demo.xml
 ├── models/
-│ ├── init.py
-│ ├── bom_component.py
-│ ├── bom_master.py
-│ ├── incoming_stock.py
-│ ├── lowstocknotify.py
-│ ├── mrpProduction.py
-│ ├── orderinherited.py
-│ ├── passed_stock.py
-│ ├── productRequest.py
-│ ├── productSending.py
-│ ├── productTemplate.py
-│ ├── quality_check.py
-│ ├── quality_check_pass_wizard.py
-│ ├── resUser.py
-│ └── stock_scrap_log.py
+│   ├── __init__.py
+│   ├── bom_component.py
+│   ├── bom_master.py
+│   ├── incoming_stock.py
+│   ├── lowstocknotify.py
+│   ├── mrpProduction.py
+│   ├── orderinherited.py
+│   ├── passed_stock.py
+│   ├── productRequest.py
+│   ├── productSending.py
+│   ├── productTemplate.py
+│   ├── quality_check.py
+│   ├── quality_check_pass_wizard.py
+│   ├── resUser.py
+│   └── stock_scrap_log.py
 ├── security/
-│ ├── ims_rules.xml
-│ ├── ims_security.xml
-│ └── ir.model.access.csv
+│   ├── ims_rules.xml
+│   ├── ims_security.xml
+│   └── ir.model.access.csv
 ├── static/
-│ └── description/
-│ └── icon.png
-│ └── src/dashboard/
-│ ├── dashboard.js
-│ └── dashboard.xml
+│   └── description/
+│       └── icon.png
+│   └── src/dashboard/
+│       ├── dashboard.js
+│       └── dashboard.xml
 ├── views/
-│ ├── actions.xml
-│ ├── bom_views.xml
-│ ├── ims_product_request_views.xml
-│ ├── ims_product_sending_views.xml
-│ ├── incoming_stock_views.xml
-│ ├── passed_stock_views.xml
-│ ├── quality_check_pass_wizard_view.xml
-│ ├── quality_check_views.xml
-│ ├── resUser.xml
-│ ├── scrap_logs_views.xml
-│ ├── templates.xml
-│ ├── views.xml
-│ └── warehouse_views.xml
+│   ├── actions.xml
+│   ├── bom_views.xml
+│   ├── ims_product_request_views.xml
+│   ├── ims_product_sending_views.xml
+│   ├── incoming_stock_views.xml
+│   ├── passed_stock_views.xml
+│   ├── quality_check_pass_wizard_view.xml
+│   ├── quality_check_views.xml
+│   ├── resUser.xml
+│   ├── scrap_logs_views.xml
+│   ├── templates.xml
+│   ├── views.xml
+│   └── warehouse_views.xml
 ├── wizards/
-│ ├── init.py
-│ ├── purchase_confirm.xml
-│ └── purchaseConfirm.py
-├── init.py
-└── manifest.py
+│   ├── __init__.py
+│   ├── purchase_confirm.xml
+│   └── purchaseConfirm.py
+├── __init__.py
+└── __manifest__.py
+
 
 ## ⚙️ Installation
 
