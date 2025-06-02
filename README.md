@@ -117,6 +117,6 @@ Odoo 18.0
 
 XML (Views & Security Rules)
 
-##🤝 Contributions
+## 🤝 Contributions
 
 Open to improvements! Feel free to fork the repo, submit PRs, or raise issues.
